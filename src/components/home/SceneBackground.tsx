@@ -21,6 +21,9 @@ const LAPTOP_SCREEN = {
 
 const PARALLAX = { x: 28, y: 18 }; // max px the scene drifts opposite the cursor
 const BLEED = 80; // extra px around the viewport so parallax never shows an edge
+// Phones/tablets (≤900px): the text stack sits low, so the video is framed higher and a
+// little larger, putting the laptop boy in the open space above the text.
+const MOBILE_FRAMING = 'max-[900px]:[--bleed:160px] max-[900px]:[--scene-y:38%] xshort:max-[900px]:[--scene-y:27%]';
 
 /** Glowing laptop screen: soft blue-white light + a few lines "typing" in a loop. */
 function LaptopGlow() {
@@ -89,10 +92,11 @@ export function SceneBackground() {
         {/* A box with the video's exact aspect ratio that always covers the screen (+ bleed),
             so % positions inside it (the laptop glow) line up at every size. */}
         <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          className={`absolute left-1/2 -translate-x-1/2 -translate-y-1/2 ${MOBILE_FRAMING}`}
           style={{
-            width: `max(calc(100vw + ${BLEED * 2}px), calc((100dvh + ${BLEED * 2}px) * ${VIDEO_ASPECT}))`,
-            height: `max(calc(100dvh + ${BLEED * 2}px), calc((100vw + ${BLEED * 2}px) / ${VIDEO_ASPECT}))`,
+            top: 'var(--scene-y, 50%)',
+            width: `max(calc(100vw + var(--bleed, ${BLEED}px) * 2), calc((100dvh + var(--bleed, ${BLEED}px) * 2) * ${VIDEO_ASPECT}))`,
+            height: `max(calc(100dvh + var(--bleed, ${BLEED}px) * 2), calc((100vw + var(--bleed, ${BLEED}px) * 2) / ${VIDEO_ASPECT}))`,
           }}
         >
           <div className="absolute inset-0 [animation:ken-burns_24s_ease-in-out_infinite_alternate]">

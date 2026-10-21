@@ -38,7 +38,7 @@ export function RoleTypewriter() {
   const shown = reduce ? ROLES[0] : text;
 
   return (
-    <p className="flex h-6 items-center font-mono text-[15px] text-amber">
+    <p className="flex h-6 items-center font-mono text-[15px] text-amber max-[900px]:h-5 max-[900px]:text-[13px]">
       <span className="sr-only">Roles: {ROLES.join(', ')}</span>
       <span aria-hidden="true" className="whitespace-pre">
         › {shown}

@@ -54,21 +54,20 @@ export function Hero() {
       <SceneBackground />
       <TopNav />
 
-      {/* desktop: badge top-left */}
-      <AvailabilityBadge className="absolute left-10 top-6 z-10 max-[900px]:hidden" />
+      {/* badge: top-left on desktop; on phones just under the top navbar */}
+      <AvailabilityBadge className="absolute left-10 top-6 z-10 max-[900px]:left-4 max-[900px]:top-[58px]" />
 
       {/* content: name bottom-left, description + CTA bottom-right; one column at ≤900px.
           Bottom padding keeps everything clear of the dock. */}
-      <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-10 px-10 pb-[136px] max-[900px]:flex-col max-[900px]:items-start max-[900px]:justify-end max-[900px]:gap-5 max-[900px]:px-4 max-[900px]:pb-[104px]">
+      <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-10 px-10 pb-[136px] max-[900px]:flex-col max-[900px]:items-stretch max-[900px]:justify-end max-[900px]:gap-3 max-[900px]:px-4 max-[900px]:pb-[96px]">
         <div className="min-w-0">
-          <AvailabilityBadge className="mb-5 min-[901px]:hidden" />
           <RoleTypewriter />
-          <NameReveal name="Piyush" className="mt-2 text-[clamp(110px,16vw,300px)] max-[900px]:text-[clamp(76px,24vw,200px)]" />
+          <NameReveal name="Piyush" className="mt-2 text-[clamp(110px,16vw,300px)] max-[900px]:mt-1 max-[900px]:text-[clamp(52px,15vw,104px)]" />
         </div>
 
-        <div className="flex w-[380px] max-w-full shrink-0 flex-col gap-5 pb-3 max-[900px]:w-full max-[900px]:pb-0">
-          <p className="text-[15px] leading-relaxed text-bone-dim sm:text-base">{DESCRIPTION}</p>
-          <HireButton />
+        <div className="flex w-[380px] max-w-full shrink-0 flex-col gap-5 pb-3 max-[900px]:w-full max-[900px]:gap-3 max-[900px]:pb-0">
+          <p className="text-[15px] leading-relaxed text-bone-dim sm:text-base max-[900px]:text-[13px] max-[900px]:leading-[1.55]">{DESCRIPTION}</p>
+          <HireButton className="max-[900px]:self-end" />
         </div>
       </div>
 
